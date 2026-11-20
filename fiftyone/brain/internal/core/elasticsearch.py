@@ -26,9 +26,9 @@ es = fou.lazy_import("elasticsearch")
 logger = logging.getLogger(__name__)
 
 _SUPPORTED_METRICS = {
-    "cosine": "cosine",
-    "dotproduct": "dot_product",
-    "euclidean": "l2_norm",
+    "cosine": "cosine",# 余弦相似度,关注方向,忽略大小
+    "dotproduct": "dot_product",# 点积,方向+长度综合考量,值越大越相似
+    "euclidean": "l2_norm",# 欧氏距离,关注绝对位置差异
     "innerproduct": "max_inner_product",
 }
 

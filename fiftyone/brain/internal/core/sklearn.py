@@ -27,10 +27,10 @@ import fiftyone.brain.internal.core.utils as fbu
 logger = logging.getLogger(__name__)
 
 _AGGREGATIONS = {
-    "mean": np.mean,
-    "post-mean": np.nanmean,
-    "post-min": np.nanmin,
-    "post-max": np.nanmax,
+    "mean": np.mean,        # 均值
+    "post-mean": np.nanmean,# 距离均值（忽略 NaN）
+    "post-min": np.nanmin,  # 取最小距离
+    "post-max": np.nanmax,  # 取最大距离
 }
 
 _MAX_PRECOMPUTE_DISTS = 15000  # ~1.7GB to store distance matrix in-memory
@@ -83,6 +83,7 @@ class SklearnSimilarity(Similarity):
 
 class SklearnSimilarityIndex(SimilarityIndex, DuplicatesMixin):
     """Class for interacting with sklearn similarity indexes.
+    内存实现向量数据库
 
     Args:
         samples: the :class:`fiftyone.core.collections.SampleCollection` used
