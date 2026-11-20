@@ -36,9 +36,9 @@ fbu = fou.lazy_import("fiftyone.brain.internal.core.utils")
 logger = logging.getLogger(__name__)
 
 _ALLOWED_ROI_FIELD_TYPES = (
-    fol.Detection,
+    fol.Detection, # 矩形检测框
     fol.Detections,
-    fol.Polyline,
+    fol.Polyline,  # 多边形
     fol.Polylines,
 )
 

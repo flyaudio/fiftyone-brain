@@ -892,12 +892,12 @@ def _get_random_characters(n):
 
 
 def _empty_embeddings(patches_field):
-    embeddings = np.empty((0, 0), dtype=float)
-    sample_ids = np.array([], dtype="<U24")
+    embeddings = np.empty((0, 0), dtype=float) #二维
+    sample_ids = np.array([], dtype="<U24") #`<U24` 是定长 Unicode 字符串(最长24字符),对应 MongoDB ObjectId 的24位十六进制
 
     if patches_field is not None:
         label_ids = np.array([], dtype="<U24")
-    else:
+    else: #none, means 整张图算embeddings
         label_ids = None
 
     return embeddings, sample_ids, label_ids
