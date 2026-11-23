@@ -140,7 +140,7 @@ def compute_visualization(
     )
 
     brain_method = config.build()
-    brain_method.ensure_requirements()
+    brain_method.ensure_requirements() #检查依赖
 
     if brain_key is not None:
         brain_method.register_run(samples, brain_key)
@@ -281,7 +281,7 @@ def _parse_config(name, **kwargs):
         name = fb.brain_config.default_visualization_method
 
     if inspect.isclass(name):
-        return name(**kwargs)
+        return name(**kwargs) # 按name造出配置实例
 
     methods = fb.brain_config.visualization_methods
 
@@ -407,7 +407,7 @@ class VisualizationResults(fob.BrainResults):
                 data_type="points",
             )
 
-        self.points = points
+        self.points = points # 低维坐标
         self.sample_ids = sample_ids
         self.label_ids = label_ids
 

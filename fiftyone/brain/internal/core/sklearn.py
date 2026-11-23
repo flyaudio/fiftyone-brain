@@ -723,8 +723,8 @@ class NeighborsHelper(object):
         can_use_dists=True,
     ):
         iokay = self._same_keep_inds(keep_inds)
-        nokay = not can_use_neighbors or self._curr_neighbors is not None
-        dokay = not can_use_dists or self._curr_dists is not None
+        nokay = not can_use_neighbors or self._curr_neighbors is not None # 图可用
+        dokay = not can_use_dists or self._curr_dists is not None # 矩阵可用
 
         if iokay and nokay and dokay:
             neighbors = self._curr_neighbors
@@ -755,7 +755,7 @@ class NeighborsHelper(object):
 
     def _same_keep_inds(self, keep_inds):
         # This handles either argument being None
-        return np.array_equal(keep_inds, self._curr_keep_inds)
+        return np.array_equal(keep_inds, self._curr_keep_inds) # # 本次请求和上次的一致
 
     def _build(
         self, keep_inds=None, can_use_neighbors=True, can_use_dists=True
