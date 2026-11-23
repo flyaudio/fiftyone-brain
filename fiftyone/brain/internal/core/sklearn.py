@@ -280,6 +280,7 @@ class SklearnSimilarityIndex(SimilarityIndex, DuplicatesMixin):
                 logger.warning(
                     "Ignoring sample IDs when label IDs are provided"
                 )
+            assert sample_ids is None
 
             inds = _get_inds(
                 label_ids,
