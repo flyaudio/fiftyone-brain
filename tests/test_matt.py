@@ -3,7 +3,21 @@ get_embeddings_from_index() 行为测试（双测，不连真实索引/模型）
 
 被测: fiftyone.brain.internal.core.utils.get_embeddings_from_index
 """
+import os, sys
 import numpy as np
+import sklearn.metrics
+
+
+def getRootDir():
+    if getattr(sys, 'frozen', False):
+        root = os.path.dirname(os.path.abspath(sys.executable))
+    else:
+        root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../")
+    return root
+sys.path.append(getRootDir())
+sys.path[0] = getRootDir()
+
+
 import fiftyone.brain.internal.core.utils
 import fiftyone.brain.internal.core.utils as fbu
 
@@ -139,6 +153,19 @@ def test_missing_flags_passthrough():
     assert call["warn_missing"] is True
 
 
+def test_pairwise_distances():
+    from sklearn.metrics import pairwise_distances
+    b = [[1, 3], [2, 2], [1, 1]]
+    r = pairwise_distances(b, metric="euclidean")
+    print(r)
+
+
+def test_NearestNeighbors():
+    import sklearn.neighbors as skn
+    import sklearn.preprocessing as skp
+
 
 if __name__ == "__main__":
-    test_sample_mode_regular_view()
+    # test_sample_mode_regular_view()
+    # test_pairwise_distances()
+    test_NearestNeighbors()
