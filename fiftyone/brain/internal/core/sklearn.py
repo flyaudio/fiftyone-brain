@@ -525,6 +525,7 @@ class SklearnSimilarityIndex(SimilarityIndex, DuplicatesMixin):
         return sample_ids, label_ids
 
     def _parse_neighbors_query(self, query):
+        """服务器neighbor查询"""
         # Full index
         if query is None:
             return None, None, True, False

@@ -418,4 +418,5 @@ if __name__ == "__main__":
     # test_01_build_index_and_inspect()
     # test_02_query_nearest_by_sample_id()
     # test_03_query_by_raw_vector()
-    test_05_patch_level_index_and_query_by_label_id()
+    # test_05_patch_level_index_and_query_by_label_id()
+    test_06_multi_query_aggregation("post-max")
